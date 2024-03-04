@@ -1,0 +1,28 @@
+{
+  "name": "connect-integration-examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloudhesive/connect-integration-examples.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cloudhesive/connect-integration-examples/issues"
+  },
+  "homepage": "https://github.com/cloudhesive/connect-integration-examples#readme",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-lambda": "^3.525.0",
+    "@aws-sdk/client-secrets-manager": "^3.525.0",
+    "axios": "^1.6.7"
+  }
+}
