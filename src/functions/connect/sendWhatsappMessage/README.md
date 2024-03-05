@@ -1,31 +1,36 @@
-## Envios de mensajes desde AWS Connect hacía Whatsapp
+## Sending Messages from AWS Connect to Whatsapp
 
-#### Este proyecto presenta una función diseñada para simplificar el envío de mensajes de WhatsApp a través de AWS Connect. La función acepta múltiples parámetros de entrada para configurar y enviar mensajes de manera eficiente, además está desarrollada lo mas generica posible, permitiendo su utilización en diversos contextos de un proyecto.
+#### This project presents a function designed to simplify the sending of WhatsApp messages through AWS Connect. The function accepts multiple input parameters to configure and send messages efficiently, and it is developed as generically as possible, allowing its use in various project contexts.
 
-### Utilización de los parametros de entrada
+### Utilization of Input Parameters
 
-La función requiere los siguientes parámetros **requeridos**:
+The function requires the following **required parameters**:
 
-- `toPhoneNumber`: El número al que se enviará el mensaje de WhatsApp de inicio.
-- `template`: El nombre del template de META que se utilizará para formatear el mensaje.
-- `channel`: El canal donde se está realizando la solicitud. Por defecto es "Connect".
-- `message`: El contenido del mensaje que se mostrará en WhatsApp.
-- `language`: El idioma del template. Por defecto será "es" (Español).
+- `toPhoneNumber`: The number to which the initial WhatsApp message will be sent.
+- `template`: The name of the META template to be used for formatting the message.
+- `channel`: The channel where the request is being made. Default is "Connect".
+- `message`: The content of the message to be displayed on WhatsApp.
+- `language`: The language of the template. Default is "es" (Spanish).
+- `authorizationType`: Authorization method of the API to consume. The available authorization types are:
+    - `Bearer`: Access token type used in the OAuth 2.0 protocol to authenticate HTTP requests.
 
-### Mensajes de error
+### Error Messages
 
-La función puede devolver los siguientes mensajes de error:
+The function can return the following error messages:
 
-- `TEMPLATE_NOT_FOUND`: Indica que el template especificado no existe. Se recomienda verificar en AWS Secret Manager si el template está creado en META. También podría surgir un error en Amazon Connect durante la invocación de la lambda debido a un valor incorrecto en el campo **template**.
-- `MESSAGE_SEND_ERROR`: Se produce cuando hay un fallo al enviar el mensaje de WhatsApp.
+- `BODY_PARSE_ERROR`: Occurs when there is a failure in attempting to format the event arriving at the Lambda function.
+- `MISSING_EVENT_PARAMETER`:  Indicates that not all required fields were sent from AWS Connect to the Lambda Function.
+- `MISSING_AWS_SECRET_PARAMETER`:  Indicates that there are some missing keys in the AWS Secret Manager secret.
+- `TEMPLATE_NOT_FOUND`: Indicates that the specified template does not exist. It is recommended to check in AWS Secret Manager if the template is created in META. An error could also occur in Amazon Connect during the lambda invocation due to an incorrect value in the **template field**.
+- `CUSTOM_API_ERROR`: Occurs when there is a failure in the API being consumed.
 
-> Para garantizar el correcto funcionamiento de la función, es fundamental que los templates de META estén configurados adecuadamente en AWS Secret Manager. Además, se recomienda realizar pruebas exhaustivas para verificar la integridad del sistema de mensajería.
+> To ensure the proper functioning of the function, it is essential that the META templates are properly configured in AWS Secret Manager. Additionally, thorough testing is recommended to verify the integrity of the messaging system.
 
-Asimismo, es importante tener en cuenta que el canal de comunicación utilizado por la función es configurable, lo que brinda flexibilidad para adaptarse a diferentes entornos de uso.
+It is also important to note that the communication channel used by the function is configurable, providing flexibility to adapt to different usage environments.
 
-Por último, se sugiere mantener la documentación actualizada y disponible para facilitar el entendimiento y la gestión del proyecto por parte de otros desarrolladores y administradores del sistema.
+Finally, it is suggested to keep the documentation updated and available to facilitate understanding and management of the project by other developers and system administrators.
 
-Para obtener más detalles sobre la implementación y configuración, consulte el código fuente y la documentación asociada.
+For more details on implementation and configuration, please refer to the source code and associated documentation.
 
 
 

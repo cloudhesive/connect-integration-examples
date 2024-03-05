@@ -1,26 +1,26 @@
-## Consumir una API desde AWS Connect
+## Consuming an API from AWS Connect
 
-#### Esta función proporciona una funcionalidad genérica para consumir una API desde Amazon Connect. Permite enviar solicitudes HTTP a una API externa con parámetros configurables, como el cuerpo de la solicitud, el método HTTP y el método de autorización.
+#### This function provides a generic functionality for consuming an API from Amazon Connect. It allows sending HTTP requests to an external API with configurable parameters, such as the request body, HTTP method, and authorization method.
 
-### Utilización de los parametros de entrada
+### Usage of Input Parameters
 
-La función requiere los siguientes parámetros **requeridos**:
+The function requires the following **required parameters**:
 
-- `body`: El cuerpo de la solicitud a enviar.
-- `method`: Método HTTP a utilizar en la llamada a la API.
-- `authorizationType`: Método de autorización de la API a consumir. Los tipos de autorización disponibles son:
-    - `Bearer`: Tipo de token de acceso utilizado en el protocolo OAuth 2.0 para autenticar solicitudes HTTP.
+- `body`: The body of the request to send.
+- `method`: HTTP method to use in the API call.
+- `authorizationType`: Authorization method of the API to consume. The available authorization types are:
+    - `Bearer`: Access token type used in the OAuth 2.0 protocol to authenticate HTTP requests.
 
-### Mensajes de error
+### Error Messages
 
-La función puede devolver los siguientes mensajes de error:
+The function can return the following error messages:
 
-- `BODY_PARSE_ERROR`: Ocurre cuando hay un fallo al intentar formatear el evento que llega a la función lambda.
-- `GET_SECRET_VALUE_ERROR`: Indica un fallo al intentar llamar a la función **GetSecretValueCommand** para obtener los secretos desde AWS Secret Manager.
-- `CUSTOM_API_ERROR`: Se produce cuando hay un fallo en la API que se está consumiendo.
+- `BODY_PARSE_ERROR`: Occurs when there is a failure in attempting to format the event arriving at the Lambda function.
+- `GET_SECRET_VALUE_ERROR`: Indicates a failure in attempting to call the **GetSecretValueCommand** function to retrieve secrets from AWS Secret Manager.
+- `CUSTOM_API_ERROR`: Occurs when there is a failure in the API being consumed.
 
-> Para garantizar el correcto funcionamiento de la función, es fundamental configurar adecuadamente los secretos en AWS Secret Manager. De lo contrario, el funcionamiento de la función se verá comprometido.
+> To ensure the proper functioning of the function, it is crucial to configure the secrets in AWS Secret Manager adequately. Otherwise, the function's operation will be compromised.
 
-Por último, se recomienda mantener la documentación actualizada y disponible para facilitar la comprensión y gestión del proyecto por parte de otros desarrolladores y administradores del sistema.
+Finally, it is recommended to keep the documentation updated and available to facilitate understanding and management of the project by other developers and system administrators.
 
-Para obtener más detalles sobre la implementación y configuración, consulte el código fuente y la documentación asociada.
+For more details on implementation and configuration, please refer to the source code and associated documentation.
