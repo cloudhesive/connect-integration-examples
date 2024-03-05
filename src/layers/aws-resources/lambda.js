@@ -1,3 +1,4 @@
+import { errors } from "../../layers/utils/nodejs/errors"
 import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
 const client = new LambdaClient(config);
 
@@ -13,9 +14,8 @@ const invoke = async (functionName, data, invocationType = "Event") => {
         return await client.send(command);
     } catch (error) {
         console.log("🚀 ~ invoke ~ error:", error.message)
-        throw error
+        throw new Error(JSON.stringify(errors.INVOKE_LAMBDA_FUNCTION_ERROR))
     }
-
 }
 
 export { invoke };

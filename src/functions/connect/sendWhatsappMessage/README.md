@@ -19,7 +19,7 @@ La función puede devolver los siguientes mensajes de error:
 - `TEMPLATE_NOT_FOUND`: Indica que el template especificado no existe. Se recomienda verificar en AWS Secret Manager si el template está creado en META. También podría surgir un error en Amazon Connect durante la invocación de la lambda debido a un valor incorrecto en el campo **template**.
 - `MESSAGE_SEND_ERROR`: Se produce cuando hay un fallo al enviar el mensaje de WhatsApp.
 
-Para garantizar el correcto funcionamiento de la función, es fundamental que los templates de META estén configurados adecuadamente en AWS Secret Manager. Además, se recomienda realizar pruebas exhaustivas para verificar la integridad del sistema de mensajería.
+> Para garantizar el correcto funcionamiento de la función, es fundamental que los templates de META estén configurados adecuadamente en AWS Secret Manager. Además, se recomienda realizar pruebas exhaustivas para verificar la integridad del sistema de mensajería.
 
 Asimismo, es importante tener en cuenta que el canal de comunicación utilizado por la función es configurable, lo que brinda flexibilidad para adaptarse a diferentes entornos de uso.
 

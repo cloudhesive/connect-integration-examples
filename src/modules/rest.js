@@ -1,19 +1,14 @@
 import axios from "axios";
+import { errors } from "../layers/utils/nodejs/errors"
 
-const execute = async ({ method, url, headers, data }) => {
-    let config = {
-        method,
-        maxBodyLength: Infinity,
-        url,
-        headers,
-        data
-    };
-
+const execute = async (request) => {
     try {
-        const response = await axios.request(config);
+        const response = await axios.request(request);
+        console.log("🚀 ~ execute ~ response:", response)
         return response
     } catch (error) {
-        throw error
+        console.log("🚀 ~ execute ~ error:", error.message)
+        throw new Error(JSON.stringify(errors.CUSTOM_API_ERROR))
     }
 }
 

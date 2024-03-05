@@ -1,3 +1,4 @@
+import { errors } from "../nodejs/errors";
 
 function parseBody(event) {
     try {
@@ -7,7 +8,7 @@ function parseBody(event) {
         if (event.Details && event.Details.Parameters) {
             return event.Details.Parameters;
         }
-        throw new Error('Body format is not correct');
+        throw new Error(JSON.stringify(errors.BODY_PARSE_ERROR));
     }
 }
 
