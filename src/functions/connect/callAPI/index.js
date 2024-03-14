@@ -6,7 +6,7 @@ import { getSecretValue } from "../../../layers/aws-resources/secretManager"
 
 const SECRET_NAME = process.env.secretManagerName
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
     const { body, method, authorizationType } = parseBody(event)
 
     if (!body || !method || !authorizationType) {

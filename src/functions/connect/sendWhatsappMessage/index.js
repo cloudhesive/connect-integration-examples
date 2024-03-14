@@ -9,7 +9,7 @@ import { authorizationHandler } from "../../../layers/utils/api/checkers"
 
 const SECRET_NAME = process.env.secretManagerName
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
     const { toPhoneNumber, template, channel, message, authorizationType, language } = parseBody(event)
     // Agregar validacion con JOI para que verifique que los parametros enviado EXISTAN - Opcional
     if (!toPhoneNumber || !template || !channel || !message || !authorizationType || !language) {
