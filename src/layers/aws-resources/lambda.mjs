@@ -1,6 +1,6 @@
-import { errors } from "../../layers/utils/nodejs/errors"
+import { errors } from "../utils/nodejs/errors.mjs"
 import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
-const client = new LambdaClient(config);
+const client = new LambdaClient();
 
 const invoke = async (functionName, data, invocationType = "Event") => {
     try {

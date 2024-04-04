@@ -14,9 +14,7 @@ const generate = (request, components = []) => {
 };
 
 const channelTemplate = {
-    Connect: {
-        [template]: (request) => generate(request),
-    }
+    Connect: (request) => generate(request)
 };
 
 export {

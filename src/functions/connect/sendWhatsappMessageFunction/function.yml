@@ -1,0 +1,2 @@
+send_whatsapp_message:
+  handler: src/functions/connect/sendWhatsappMessageFunction/index.handler

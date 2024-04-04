@@ -1,21 +1,22 @@
-import { getSecretValue } from "../../../layers/aws-resources/secretManager"
-import { channelTemplate } from "../../../layers/whatsapp/template"
-import { execute } from "../../../modules/rest"
-import { findElement } from "../../../layers/utils/nodejs/arrays"
-import { parseBody } from "../../../layers/utils/api/formatters"
-import { errors } from "../../../layers/utils/nodejs/errors"
-import { success } from "../../../layers/utils/nodejs/success"
-import { authorizationHandler } from "../../../layers/utils/api/checkers"
+import { getSecretValue } from "../../../layers/aws-resources/secretManager.mjs"
+import { channelTemplate } from "../../../layers/whatsapp/template.mjs"
+import { execute } from "../../../modules/rest.mjs"
+import { findElement } from "../../../layers/utils/nodejs/arrays.mjs"
+import { parseBody } from "../../../layers/utils/api/formatters.mjs"
+import { errors } from "../../../layers/utils/nodejs/errors.mjs"
+import { success } from "../../../layers/utils/nodejs/success.mjs"
+import { authorizationHandler } from "../../../layers/utils/api/checkers.mjs"
 
 const SECRET_NAME = process.env.secretManagerName
 
 export const handler = async (event) => {
-    const { toPhoneNumber, template, channel, message, authorizationType, language } = parseBody(event)
+    const body = parseBody(event)
     // Agregar validacion con JOI para que verifique que los parametros enviado EXISTAN - Opcional
-    if (!toPhoneNumber || !template || !channel || !message || !authorizationType || !language) {
+    if (!body.toPhoneNumber || !body.template || !body.channel || !body.message || !body.authorizationType || !body.language) {
         throw new Error(JSON.stringify(errors.MISSING_EVENT_PARAMETER))
     }
 
+    const { toPhoneNumber, template, channel, authorizationType, language } = body
     const { AccessToken, url, templates } = await getSecretValue(SECRET_NAME)
 
     // Agregar validacion con JOI para que verifique que los parametros enviado EXISTAN - Opcional
@@ -30,7 +31,7 @@ export const handler = async (event) => {
         throw new Error(JSON.stringify(errors.TEMPLATE_NOT_FOUND));
     }
 
-    const data = channelTemplate[channel][template]({ toPhoneNumber, template, message, language });
+    const data = channelTemplate[channel]({ toPhoneNumber, template, message, language });
     console.log("🚀 ~ exports.handler= ~ data:", data)
 
     const headers = authorizationHandler[authorizationType]?.({ AccessToken });

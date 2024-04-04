@@ -1,4 +1,4 @@
-import { errors } from "../nodejs/errors";
+import { errors } from "../nodejs/errors.mjs";
 
 function parseBody(event) {
     try {

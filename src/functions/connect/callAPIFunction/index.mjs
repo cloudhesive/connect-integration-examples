@@ -1,18 +1,19 @@
-import { execute } from "../../../modules/rest"
-import { parseBody } from "../../../layers/utils/api/formatters"
-import { errors } from "../../../layers/utils/nodejs/errors"
-import { authorizationHandler } from "../../../layers/utils/api/checkers"
-import { getSecretValue } from "../../../layers/aws-resources/secretManager"
+import { execute } from "../../../modules/rest.mjs"
+import { parseBody } from "../../../layers/utils/api/formatters.mjs"
+import { errors } from "../../../layers/utils/nodejs/errors.mjs"
+import { authorizationHandler } from "../../../layers/utils/api/checkers.mjs"
+import { getSecretValue } from "../../../layers/aws-resources/secretManager.mjs"
 
 const SECRET_NAME = process.env.secretManagerName
 
 export const handler = async (event) => {
-    const { body, method, authorizationType } = parseBody(event)
+    const req = parseBody(event)
 
-    if (!body || !method || !authorizationType) {
+    if (!req.body || !req.method || !req.authorizationType) {
         return errors.MISSING_PARAMETER;
     }
 
+    const { body, method, authorizationType } = req
     const { AccessToken, url } = await getSecretValue(SECRET_NAME)
 
     const headers = authorizationHandler[authorizationType]?.({ AccessToken });

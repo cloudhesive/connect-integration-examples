@@ -1,0 +1,2 @@
+call_api:
+  handler: src/functions/connect/callAPIFunction/index.handler

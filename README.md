@@ -8,8 +8,8 @@ You'll find the implementations organized within the following subdirectories:
 
 |     Function    |       Folder      | AWS Service |
 |:----------:|:-----------------:|:-----------:|
-| Call API       | [callAPI/](src/functions/connect/callAPI)  | AWS Connect        |
-| Send Whatsapp message    | [sendWhatsappMessage/](src/functions/connect/sendWhatsappMessage)       | AWS Connect      |
+| Call API       | [callAPI/](src/functions/connect/callAPIFunction)  | AWS Connect        |
+| Send Whatsapp message    | [sendWhatsappMessage/](src/functions/connect/sendWhatsappMessageFunction)       | AWS Connect      |
 
 Each directory houses detailed instructions for understanding and invoking the example code. You'll find comprehensive documentation within the README.md file of each folder.
 

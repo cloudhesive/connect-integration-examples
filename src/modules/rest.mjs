@@ -1,5 +1,5 @@
 import axios from "axios";
-import { errors } from "../layers/utils/nodejs/errors"
+import { errors } from "../layers/utils/nodejs/errors.mjs"
 
 const execute = async (request) => {
     try {

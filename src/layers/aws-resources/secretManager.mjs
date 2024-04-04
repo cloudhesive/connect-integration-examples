@@ -1,5 +1,5 @@
 import { SecretsManagerClient, GetSecretValueCommand } from "@aws-sdk/client-secrets-manager";
-import { errors } from "../../layers/utils/nodejs/errors"
+import { errors } from "../utils/nodejs/errors.mjs"
 
 const client = new SecretsManagerClient();
 
